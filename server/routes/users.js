@@ -7,7 +7,7 @@ const {
 } = require("../controllers/users");
 const usersRouter = Router();
 
-usersRouter.get("/", getUsers);
+usersRouter.get("/", getUser);
 usersRouter.get("/:id", getUser);
 usersRouter.put("/:id", updateUser);
 usersRouter.delete("/:id", removeUser);
