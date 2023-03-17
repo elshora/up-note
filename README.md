@@ -1,2 +1,2 @@
 # up-note
- Up note Full stack project with MERN techs and Material UI
+ Up note Full stack project with MERN techs and Bootstrap
