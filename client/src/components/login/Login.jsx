@@ -32,7 +32,7 @@ export default function Login() {
       navigate("/");
       dispatch(reset());
     }
-  }, [isSuccess, navigate, dispatch]);
+  }, [isSuccess, dispatch, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
