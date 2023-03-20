@@ -10,7 +10,7 @@ function App() {
   return(
     <>
     <NavBar/>
-    <main>
+    <main className="app">
           <Routes>
             <Route element={<PrivateRoutes />}>
                 <Route element={<Home/>} path="/home" exact/>

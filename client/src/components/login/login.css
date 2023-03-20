@@ -1,0 +1,4 @@
+.login {
+    height: calc(100vh - 116px);
+    max-width: 556px;
+}

@@ -13,41 +13,15 @@
 html {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
-  color: #fff;
 }
 
 body {
-  min-height: 100vh;
-  background-color: dodgerblue;
-}
-
-.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 1rem 0.5rem;
-  background-color: var(--light-color);
-}
-
-section {
-  width: 100%;
-  max-width: 420px;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 1rem;
-  background-color: var(--light-color);
+  background-color:var(--light-color) !important;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex-grow: 1;
-  padding-bottom: 1rem;
 }
 
 a:visited {
@@ -57,21 +31,12 @@ a:visited {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-button,
 textarea {
   font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
-}
-
-label,
-button {
-  margin-top: 1rem;
-}
-
-button {
-  padding: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .instructions {
@@ -87,10 +52,12 @@ button {
 .instructions > svg {
   margin-right: 0.25rem;
 }
+
 .instructions span {
   color: inherit;
   background-color: inherit;
 }
+
 .offscreen {
   position: absolute;
   left: -9999px;
@@ -110,18 +77,6 @@ button {
   margin-left: 0.25rem;
 }
 
-.errmsg {
-  background-color: lightpink;
-  color: firebrick;
-  font-weight: bold;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.line {
-  display: inline-block;
-  color: #000 !important;
-}
 .line a {
   color: #000 !important;
 }
