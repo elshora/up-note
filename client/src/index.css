@@ -63,7 +63,9 @@ textarea {
   left: -9999px;
 }
 
-
+.hide {
+display: none;
+}
 
 .valid {
   color: limegreen;
