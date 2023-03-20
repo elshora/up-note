@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { login, reset } from "../../features/auth/authSlice";
 import Logo from "../../imgs/up-logo.png";
+import Spinner from "../Spinner";
 import "./login.css";
 export default function Login() {
   const userRef = useRef();
@@ -89,7 +90,9 @@ export default function Login() {
               required
             />
             {isLoading ? (
-              <p>loading...</p>
+              <div className="d-flex justify-content-center py-3">
+                <Spinner />
+              </div>
             ) : (
               <button className="btn btn-outline-warning my-3">Sign In</button>
             )}

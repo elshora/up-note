@@ -10,6 +10,7 @@ import { register } from "../../features/auth/authSlice";
 import { Link } from "react-router-dom";
 import "./register.css";
 import Logo from "../../imgs/up-logo.png";
+import Spinner from "../Spinner";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -255,7 +256,9 @@ export default function Register() {
                   Must match the first password input field.
                 </p>
                 {isLoading ? (
-                  <p>Loading...</p>
+                  <div className="d-flex justify-content-center py-3">
+                    <Spinner />
+                  </div>
                 ) : (
                   <button
                     className="btn btn-outline-warning"
