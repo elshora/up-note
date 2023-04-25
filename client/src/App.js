@@ -8,25 +8,26 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import About from "./components/About/About";
 import Contactus from "./components/Contact/Contact_US";
+
 function App() {
-  return(
+  return (
     <>
-    <NavBar/>
-    <main className="app">
-          <Routes>
-            <Route element={<PrivateRoutes />}>
-                <Route element={<Home/>} path="/home" exact/>
-                <Route element={<Home/>} path="/" exact/>
-            </Route>
-            <Route element={<Login/>} path="/login"/>
-            <Route element={<Register/>} path="/register"/>
-            <Route element={<About/>} path="/about"/>
-            <Route element={<Contactus/>} path="/contact"/>
-          </Routes>
-    </main>
-    <Footer/>
+      <NavBar />
+      <main className="app">
+        <Routes>
+          <Route element={<PrivateRoutes />}>
+            <Route element={<Home />} path="/home" exact />
+            <Route element={<Home />} path="/" exact />
+          </Route>
+          <Route element={<Login />} path="/login" />
+          <Route element={<Register />} path="/register" />
+          <Route element={<About />} path="/about" />
+          <Route element={<Contactus />} path="/contact" />
+        </Routes>
+      </main>
+      <Footer />
     </>
-    )
+  );
 }
 
 export default App;

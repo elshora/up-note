@@ -63,7 +63,7 @@ const getPost = async (req, res) => {
 
 const getUserPosts = async (req, res) => {
   try {
-    const { username } = req.params;
+    const { username } = req.query;
     if (!username) {
       res.status(402).json({ message: "required login" });
     }

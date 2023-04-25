@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const { usersRouter } = require("./routes/users");
 const { authRouter } = require("./routes/auth");
+const { postsRouter } = require("./routes/posts");
 
 dotenv.config();
 const { DB_URI, SERVER_PORT } = process.env;
@@ -11,6 +12,7 @@ const { DB_URI, SERVER_PORT } = process.env;
 const app = express();
 app.use(cors(), express.json());
 app.use("/api/users", usersRouter);
+app.use("/api/posts", postsRouter);
 app.use("/api/auth", authRouter);
 
 mongoose.set("strictQuery", true);

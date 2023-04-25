@@ -10,8 +10,8 @@ const postSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    auther: { type: Types.ObjectId, ref: "User", required: true },
+    auther: { type: Object, ref: "User", required: true },
   },
   { timestamps: true }
 );
-module.exports = mongoose.model("Pser", postSchema);
+module.exports = mongoose.model("Post", postSchema);

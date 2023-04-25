@@ -4,12 +4,12 @@ const {
   updatePost,
   deletePost,
   getUserPosts,
-} = require("../controllers/users");
-const postssRouter = Router();
+} = require("../controllers/posts");
+const postsRouter = Router();
 
-usersRouter.post("/", addPost);
-usersRouter.get("/", getUserPosts);
-usersRouter.put("/:id", updatePost);
-usersRouter.deletPost("/:id", deletePost);
+postsRouter.post("/", addPost);
+postsRouter.get("/", getUserPosts);
+postsRouter.put("/:id", updatePost);
+postsRouter.delete("/:id", deletePost);
 
-module.exports = { postssRouter };
+module.exports = { postsRouter };

@@ -4,7 +4,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const initialState = {
   user: user ? user : null,
-  isLoggedIn: user?true:false,
+  isLoggedIn: user ? true : false,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -26,7 +26,7 @@ export const authSlice = createSlice({
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
-    },   
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -51,7 +51,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.user = action.payload;
-        state.isLoggedIn = true
+        state.isLoggedIn = true;
       })
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
@@ -60,11 +60,11 @@ export const authSlice = createSlice({
         state.user = null;
       })
       .addCase(logout.fulfilled, (state) => {
-        state.user= null;
-        state.isLoggedIn= false
+        state.user = null;
+        state.isLoggedIn = false;
       });
   },
 });
 
-export const { reset ,checkAuth} = authSlice.actions;
+export const { reset, checkAuth } = authSlice.actions;
 export default authSlice.reducer;
