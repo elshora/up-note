@@ -1,0 +1,18 @@
+.single-note {
+  background-color: white;
+  height: 300px;
+  overflow: hidden;
+
+  transition: 0.3s;
+}
+.single-note:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.09);
+}
+.single-note h5 {
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+.single-note .content {
+  text-overflow: ellipsis;
+  height: 100%;
+}

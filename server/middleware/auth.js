@@ -13,11 +13,13 @@ const register = async (req, res) => {
     const user = await newUser.save();
     res.status(200).json(user);
   } catch (error) {
-     if(User.findOne({ username: req.body.username }))
-     {res.status(409).json(error)}else if(error){
-      res.status(408).json({message:"email used"})}else{
-        res.status(500).json(error);
-      }
+    if (User.findOne({ username: req.body.username })) {
+      res.status(409).json(error);
+    } else if (error) {
+      res.status(408).json({ message: "email used" });
+    } else {
+      res.status(500).json(error);
+    }
   }
 };
 const login = async (req, res) => {

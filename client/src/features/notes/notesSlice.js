@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getNotesByAuthor } from "./notesAPI";
+import { getNotesByAuthor, postNote } from "./notesAPI";
 
 const initialState = {
   notes: [],
@@ -9,12 +9,20 @@ const initialState = {
   message: "",
 };
 export const getNotes = createAsyncThunk("notes/getNotes", getNotesByAuthor);
+export const AddNewNote = createAsyncThunk("notes/addNewNote", postNote);
+
 export const notesSlice = createSlice({
   name: "notes",
   initialState,
   reducers: {
     reset: (state) => {
-      state.notes = null;
+      state.isLoading = false;
+      state.isSuccess = false;
+      state.isError = false;
+      state.message = "";
+    },
+    logout: (state) => {
+      state.notes = [];
       state.isLoading = false;
       state.isSuccess = false;
       state.isError = false;
@@ -36,6 +44,18 @@ export const notesSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.notes = null;
+      })
+      .addCase(AddNewNote.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(AddNewNote.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(AddNewNote.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });

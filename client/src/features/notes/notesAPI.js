@@ -31,3 +31,24 @@ export const getNotesByAuthor = async (user, thunkAPI) => {
     return rejectWithValue(message);
   }
 };
+
+export const postNote = async (note, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const response = await axios.post(notesAPI, note, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (err) {
+    const message = () => {
+      if (!err?.response) {
+        return "No Server Response";
+      } else if (err.response?.status === 400) {
+        return "Missing Data";
+      } else {
+        return "Failed";
+      }
+    };
+    return rejectWithValue(message);
+  }
+};
