@@ -1,13 +1,14 @@
 import React from "react";
+import EmptyImg from "../../imgs/empty.png";
 
 export default function Empty() {
   return (
     <div className="container my-5">
       <div className="row text-center">
         <div className="col">
-          <h1>Welcome to your notes app!</h1>
+          <h1>Welcome to Up note!</h1>
           <p>You don't have any notes yet.</p>
-          <button className="btn btn-primary ">Create a new note</button>
+          <img src={EmptyImg} alt="empty vector" className="mw-100" />
         </div>
       </div>
     </div>

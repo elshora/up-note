@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNotes } from "../../features/notes/notesSlice";
 import Empty from "./Empty";
 import Notes from "./Notes";
+import AddNote from "./AddNote";
 
 export default function Home() {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -13,8 +14,11 @@ export default function Home() {
   }, []);
 
   return (
-    <section className="container">
-      {notes.length !== 0 ? <Notes notes={notes} /> : <Empty />}
-    </section>
+    <main>
+      <AddNote />
+      <section className="container">
+        {notes.length !== 0 ? <Notes notes={notes} /> : <Empty />}
+      </section>
+    </main>
   );
 }
