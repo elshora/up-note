@@ -1,8 +1,5 @@
 .single-note {
   background-color: white;
-  height: 300px;
-  overflow: hidden;
-
   transition: 0.3s;
 }
 .single-note:hover {
@@ -11,8 +8,13 @@
 .single-note h5 {
   font-weight: normal;
   font-size: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.5;
 }
 .single-note .content {
+  height: 300px;
+  overflow: hidden;
   text-overflow: ellipsis;
-  height: 100%;
 }

@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main>
       <AddNote />
-      <section className="container">
+      <section className="container my-5">
         {notes?.length !== 0 ? (
           <div className="row">
             {notes?.map((note, index) => (
