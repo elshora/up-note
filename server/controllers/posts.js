@@ -37,6 +37,7 @@ const updatePost = async (req, res) => {
 
 const deletePost = async (req, res) => {
   try {
+    console.log("here");
     const post = await Post.findById(req.params.id);
     if (post.username === req.body.username) {
       try {

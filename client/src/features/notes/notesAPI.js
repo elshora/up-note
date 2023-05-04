@@ -15,7 +15,7 @@ export const getNotesByAuthor = async (user, thunkAPI) => {
         headers: { "Content-Type": "application/json" },
       }
     );
-    return response.data;
+    return response.data.reverse();
   } catch (err) {
     const message = () => {
       if (!err?.response) {
@@ -45,6 +45,27 @@ export const postNote = async (note, thunkAPI) => {
         return "No Server Response";
       } else if (err.response?.status === 400) {
         return "Missing Data";
+      } else {
+        return "Failed";
+      }
+    };
+    return rejectWithValue(message);
+  }
+};
+
+export const deleteNote = async (noteID, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const response = await axios.delete(`${notesAPI}/${noteID}`, {
+      headers: { "Content-Type": "application/json" },
+    });
+    return response.data;
+  } catch (err) {
+    const message = () => {
+      if (!err?.response) {
+        return "No Server Response";
+      } else if (err.response?.status === 400) {
+        return "Missing ID";
       } else {
         return "Failed";
       }

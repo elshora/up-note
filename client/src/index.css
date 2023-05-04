@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  background-color:var(--light-color) !important;
+  background-color: var(--light-color) !important;
 }
 
 form {
@@ -64,7 +64,7 @@ textarea {
 }
 
 .hide {
-display: none;
+  display: none;
 }
 
 .valid {
@@ -96,4 +96,7 @@ display: none;
   width: 40px;
   transform: translate3d(-50%, -50%, 0);
   will-change: transform;
+}
+.home {
+  min-height: calc(100vh - 170px);
 }

@@ -3,7 +3,7 @@ import NormalBtn from "../utils/NormalBtn";
 import MainHeading from "./MainHeading";
 import SubTitle from "./SubTitle";
 import Paragraph from "./Pragrah";
-
+import "./about.css";
 export default function About() {
   let btns = [
     { link: "/contact", text: "Contact Us" },
@@ -11,8 +11,8 @@ export default function About() {
   ];
   return (
     <>
-      <div className="container">
-        <div className="topsection ">
+      <div className="container about my-5">
+        <div className="topsection d-flex flex-column ">
           <MainHeading title="Up Note" />
           <SubTitle subTitle="Store Your Thoughts" />
           <Paragraph minParagraph="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui modi voluptatem quam, impedit saepe consequuntur explicabo corrupti, tenetur possimus natus consectetur similique exercitationem ut hic ex soluta, sapiente voluptatibus quia?" />

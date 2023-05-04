@@ -14,7 +14,12 @@
   line-height: 1.5;
 }
 .single-note .content {
-  height: 300px;
+  height: 250px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.timestamp {
+  font-size: 16px;
+  line-height: 1.5;
 }

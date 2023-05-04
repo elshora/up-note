@@ -14,7 +14,7 @@ export default function Home() {
   }, [user, dispatch]);
 
   return (
-    <main>
+    <main className="home">
       <AddNote />
       <section className="container my-5">
         {notes?.length !== 0 ? (

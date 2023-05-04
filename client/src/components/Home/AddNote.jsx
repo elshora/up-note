@@ -6,27 +6,22 @@ import {
   faNoteSticky,
 } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
-import "./addNote.css";
 import Spinner from "../Spinner";
 import { AddNewNote, getNotes, reset } from "../../features/notes/notesSlice";
 import { useNavigate } from "react-router-dom";
+import "./addNote.css";
+
 export default function AddNote() {
   const user = JSON.parse(localStorage.getItem("user"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { isSuccess, message, isLoading } = useSelector((state) => state.notes);
-
   const [toggleForm, setToggleForm] = useState(false);
-
   const errRef = useRef();
-
   const [title, setTitle] = useState("");
   const [titleFocus, setTitleFocus] = useState(false);
-
   const [text, setText] = useState("");
   const [textFocus, setTextFocus] = useState(false);
-
   const [errMsg, setErrMsg] = useState("");
 
   useEffect(() => {
@@ -45,10 +40,11 @@ export default function AddNote() {
       setTitle("");
     }
   }, [isSuccess, dispatch, navigate]);
+
   const handelSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(AddNewNote({ auther: user, title, content: text }));
+      await dispatch(AddNewNote({ auther: user, title, content: text }));
       await dispatch(getNotes(`${user}`));
     } catch (error) {
       console.log(error);

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getNotesByAuthor, postNote } from "./notesAPI";
+import { deleteNote, getNotesByAuthor, postNote } from "./notesAPI";
 
 const initialState = {
   notes: [],
@@ -10,6 +10,10 @@ const initialState = {
 };
 export const getNotes = createAsyncThunk("notes/getNotes", getNotesByAuthor);
 export const AddNewNote = createAsyncThunk("notes/addNewNote", postNote);
+export const deleteOneNote = createAsyncThunk(
+  "notes/deleteOneNote",
+  deleteNote
+);
 
 export const notesSlice = createSlice({
   name: "notes",
@@ -53,6 +57,18 @@ export const notesSlice = createSlice({
         state.isSuccess = true;
       })
       .addCase(AddNewNote.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(deleteOneNote.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteOneNote.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(deleteOneNote.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
