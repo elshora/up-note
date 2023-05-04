@@ -73,3 +73,27 @@ export const deleteNote = async (noteID, thunkAPI) => {
     return rejectWithValue(message);
   }
 };
+export const updateNote = async (updatedNote, thunkAPI) => {
+  const { rejectWithValue } = thunkAPI;
+  try {
+    const response = await axios.put(
+      `${notesAPI}/${updatedNote._id}`,
+      updatedNote,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    return response.data;
+  } catch (err) {
+    const message = () => {
+      if (!err?.response) {
+        return "No Server Response";
+      } else if (err.response?.status === 401) {
+        return "not authorized to this action";
+      } else {
+        return "Failed";
+      }
+    };
+    return rejectWithValue(message);
+  }
+};

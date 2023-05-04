@@ -9,10 +9,16 @@ import {
   reset,
 } from "../../features/notes/notesSlice";
 import "./notes.css";
-const NoteModal = ({ note, onEdit }) => {
+import EditNote from "./EditNote";
+const NoteModal = ({ note }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const [show, setShow] = useState(false);
-  const toggleModal = () => setShow(!show);
+  const toggleModal = () => {
+    setShow(!show);
+    setEdite(false);
+  };
+  const [edite, setEdite] = useState(false);
+  const toggleEdite = () => setEdite(!edite);
   const { isSuccess, message, isLoading } = useSelector((state) => state.notes);
   const dispatch = useDispatch();
   const handelDelete = async () => {
@@ -30,13 +36,18 @@ const NoteModal = ({ note, onEdit }) => {
       <Button variant="outline-warning" onClick={toggleModal} className="w-100">
         View Note
       </Button>
-
       <Modal size="lg" show={show} onHide={toggleModal} centered scrollable>
-        <Modal.Header className="mx-1">
-          <Modal.Title>{note.title}</Modal.Title>
-        </Modal.Header>
-        <p className="text-white bg-danger">{message}</p>
-        <Modal.Body>{note.content}</Modal.Body>
+        {edite ? (
+          <EditNote note={note} />
+        ) : (
+          <>
+            <Modal.Header className="mx-1">
+              <Modal.Title>{note.title}</Modal.Title>
+            </Modal.Header>
+            <p className="text-white bg-danger">{message}</p>
+            <Modal.Body>{note.content}</Modal.Body>{" "}
+          </>
+        )}
 
         <Modal.Footer className="p-0 border border-warning rounded m-1 d-flex justify-content-between">
           <div>
@@ -47,7 +58,7 @@ const NoteModal = ({ note, onEdit }) => {
                 <FontAwesomeIcon icon={faTrash} className="text-danger" />
               </Button>
             )}
-            <Button variant="none" onClick={onEdit}>
+            <Button variant="none" onClick={toggleEdite}>
               <FontAwesomeIcon icon={faEdit} className="text-muted" />
             </Button>
             <p className="timestamp mx-1 text-center text-muted fw-light d-inline-block">

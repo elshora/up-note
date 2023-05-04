@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../Spinner";
 import { AddNewNote, getNotes, reset } from "../../features/notes/notesSlice";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./addNote.css";
 
 export default function AddNote() {
@@ -38,6 +40,16 @@ export default function AddNote() {
       dispatch(reset());
       setText("");
       setTitle("");
+      toast.success("Successfully Done!", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }, [isSuccess, dispatch, navigate]);
 
@@ -51,9 +63,21 @@ export default function AddNote() {
     }
   };
   return (
-    <section className="text-center container my-5 note-form">
+    <section className="text-center container my-5 ">
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {toggleForm ? (
-        <div className="d-flex flex-column gap-3">
+        <div className="d-flex flex-column gap-3 note-form mx-auto">
           <div>
             <button
               onClick={() => setToggleForm(!toggleForm)}
@@ -62,7 +86,7 @@ export default function AddNote() {
               <FontAwesomeIcon icon={faClose} />
             </button>
           </div>
-          <h2 className="display-4 fw-normal">Add New Note</h2>
+          <h2 className="display-5 fw-normal">Add New Note</h2>
           <p
             ref={errRef}
             className={errMsg ? "text-light bg-danger" : "d-none"}
@@ -91,7 +115,7 @@ export default function AddNote() {
                 icon={faInfoCircle}
                 className="text-warning bg-dark"
               />
-              Title Shouldn't be empty
+              Title should be unique & Shouldn't be empty
             </p>
             <textarea
               type="text"
